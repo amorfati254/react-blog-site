@@ -1,22 +1,38 @@
-import { useState } from "react";
+import { useState } from 'react';
 const Home = () => {
-    //give name a default value by passing it to useState as a param
-    let [name, setName] = useState("mario");
-    let [age, setAge] = useState(25);
-    const title = "Home Page"
-    const handleClick = (e) => {
-        setName('luigi');
-        setAge(30);
-    }
-    return (  
-        <div className="home">
-            <h2>{title}</h2>
-            <p>{name} is {age} years old</p>
-            <button onClick={handleClick}>Click me</button>
-            
+  const title = 'Home Page ';
+  const [blogs, setBlogs] = useState([
+    {
+      title: 'My new website',
+      body: 'Lorem ipsum dolor sit amet...',
+      author: 'mario',
+      id: 1,
+    },
+    {
+      title: 'Welcome Party!',
+      body: 'Lorem ipsum dolor sit amet...',
+      author: 'luigi',
+      id: 2,
+    },
+    {
+      title: 'Web dev top tips!',
+      body: 'Lorem ipsum dolor sit amet...',
+      author: 'yoshi',
+      id: 3,
+    },
+  ]);
+
+  return (
+    <div className='home'>
+      <h2>{title}</h2>
+      {blogs.map((blog) => (
+        <div className='blog-preview' key={blog.id}>
+          <h2>{blog.title}</h2>
+          <p>Written by {blog.author}</p>
         </div>
-        
-    );
-}
- 
+      ))}
+    </div>
+  );
+};
+
 export default Home;
